@@ -1,0 +1,27 @@
+.brk-seeded {
+  $size: 1.4em;
+
+  position: relative;
+  top: -1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $size;
+  height: $size;
+  padding: 0;
+  margin-right: .2em;
+  font-size: 75%;
+  font-weight: $brk-font-weight-bold;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: 'lnum', 'tnum';
+
+  line-height: $size;
+  color: $brk-seeded-color;
+
+  background-color: $brk-seeded-bg-color;
+  border: $brk-seeded-border;
+  border-radius: 50%;
+
+
+}

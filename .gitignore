@@ -1,0 +1,16 @@
+*~
+.DS_Store
+**/*.mwb.bak
+**/*.mwb.beforefix
+
+
+.env
+.env.local
+.env.development
+.env.test
+.env.development.local
+.env.test.local
+.env.production.local
+
+/**/node_modules/
+/**/bower_components/

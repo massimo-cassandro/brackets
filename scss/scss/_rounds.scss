@@ -1,0 +1,109 @@
+@use 'sass:math';
+
+// contiene header e contenitore match stesso round
+.brk-round-wrapper {
+  position: relative;
+  display: inline-block;
+  $round-wrapper-width: calc(#{$brk-match-width} + #{$brk-rear-connector-size} + #{$brk-front-connector-size});
+  flex: 0 0 $round-wrapper-width;
+  width: $round-wrapper-width;
+  // height: 100%;
+
+  // &:not(:last-child) {
+  //   scroll-snap-align: start;
+  // }
+
+  color: $brk-round-color;
+  background-color: $brk-round-bg-color;
+
+
+  @if $brk-round-alt-bg-color != false {
+    &:nth-child(even) {
+      background-color: $brk-round-alt-bg-color;
+    }
+  }
+
+
+  /*
+    impostazione padding verticali per i diversi rounds
+    --------------------------------------------------
+    padding = (altezza match-wrapper * ((2^round-idx) / 2) - altezza blocco match) / 2
+    in cui:
+    altezza match-wrapper => altezza blocco match + margini = $brk-match-height + $brk-match-wrapper-vertical-padding * 2
+    round-idx            => indice del round base 1 (:nth-child)
+    altezza blocco match  => altezza blocco match senza margini = $brk-match-height
+  */
+  @for $round-idx from 1 through 11 { // 11 rounds = 2048 giocatori
+
+    /* stylelint-disable */
+    $vertical-padding: calc(
+      (
+        (
+          (#{$brk-match-height} + #{$brk-match-wrapper-vertical-padding} * 2) *
+          #{math.div(math.pow(2, $round-idx), 2)}
+        ) - #{$brk-match-height}
+      ) / 2
+    );
+    /* stylelint-enable */
+
+    &:nth-child(#{$round-idx}) {
+
+      // padding verticale .brk-match-wrapper
+      .brk-match-wrapper {
+        padding: $vertical-padding 0;
+      }
+
+      // lunghezza aste verticali dei connettori
+      .brk-connector.front::after {
+        height: calc(#{$brk-match-height} * .5 + #{$vertical-padding});
+      }
+    }
+  }
+
+  &:first-child { // primo
+    $round-wrapper-width: calc(#{$brk-match-width} + #{$brk-front-connector-size});
+    flex: 0 0 $round-wrapper-width;
+    width: $round-wrapper-width;
+
+    .brk-connector.rear {
+      display: none;
+    }
+  }
+
+  &:last-child { // ultimo
+
+    $round-wrapper-width: calc(#{$brk-match-width} + #{$brk-rear-connector-size});
+    flex: 0 0 $round-wrapper-width;
+    width: $round-wrapper-width;
+
+    .brk-connector.front {
+      display: none;
+    }
+  }
+
+}
+
+.brk-round-header, .brk-round-inner-wrapper {
+  width: 100%;
+}
+.brk-round-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: $brk-header-height;
+  padding: $brk-header-padding;
+  color: $brk-header-color;
+  background-color: $brk-header-bg-color;
+
+  @if $brk-header-border-left {
+    border-left: $brk-header-border-left;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}

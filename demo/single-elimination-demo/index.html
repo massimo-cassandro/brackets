@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Single elimination</title>
+    <link rel="icon" href="data:;base64,=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow:ital,wght@0,200;0,400;0,500;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/single-elimination-demo.css" type="text/css" media="all">
+  </head>
+  <body>
+    <h1>Brackets eliminazione diretta</h1>
+
+
+
+    <details>
+      <summary>Dati</summary>
+
+      <div class="bracket-demo-triggers border">
+        <div class="form-group">
+          <label for="num-iscritti">Num. iscritti</label>
+          <input type="number" id="num-iscritti" step="1" min="1" value="34" required>
+        </div>
+        <div class="form-group">
+          <label for="num-match">Num. match pers.</label>
+          <input type="number" id="num-match" step="1" min="0" value="2" required>
+        </div>
+        <div class="form-group">
+          <label for="num-tds">Num. TdS</label>
+          <select id="num-tds" required>
+            <option value="0">0</option>
+            <option value="2">2</option>
+            <option value="4" selected>4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="32">32</option>
+            <option value="64">64</option>
+            <option value="128">128</option>
+          </select>
+        </div>
+        <div class="form-group flex-start">
+          <label for="show-tds">Mostra TdS</label>
+          <input type="checkbox" id="show-tds" checked>
+        </div>
+        <button type="button" class="genera-dati">Genera dati demo</button>
+        <button type="button" class="acquisisci-box-dati">Acquisisci dati da box</button>
+      </div>
+
+      <div class="data-wrapper">
+        <div>
+          <h3>Parametri demo / Config</h3>
+          <div id="json-parametri-demo" class="box"></div>
+        </div>
+        <div>
+          <h3>Iscritti</h3>
+          <div id="json-iscritti" class="box json" contenteditable></div>
+        </div>
+        <div>
+          <h3>Partite</h3>
+          <div id="json-partite" class="box json" contenteditable></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="bracket-demo-triggers">
+      <button type="button" class="primo-round">Genera partite primo round</button>
+      <button type="button" class="gioca-round" disabled>Gioca turno</button>
+    </div>
+    <div id="bracket-demo-container"></div>
+
+    <script src="./dist/single-elimination-demo.min.js"></script>
+  </body>
+</html>

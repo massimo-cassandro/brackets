@@ -1,0 +1,18 @@
+@function container-height($first-round-matches: 2) {
+  @return calc(#{$brk-header-height} + (
+    (#{$brk-match-height} + #{$brk-match-wrapper-vertical-padding * 2} + #{$brk-match-border-width * 2}) * #{$first-round-matches})
+  );
+}
+
+// restituisce la regola max-heigth sulla base della variabile $brk-container-max-visible-matches
+@mixin container-max-height() {
+  @if $brk-container-max-visible-matches != false {
+    max-height: container-height($brk-container-max-visible-matches);
+    overflow-y: scroll;
+  }
+}
+
+// restituisce la regola min-heigth sulla base del valore $first-round-matches dato
+@mixin container-min-height($first-round-matches: 2) {
+  min-height: container-height($first-round-matches);
+}

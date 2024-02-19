@@ -1,0 +1,35 @@
+.brk-connector {
+  position: relative;
+  height: $brk-connector-line-width;
+
+  &, &::after {
+    background-color: $brk-connector-color;
+  }
+
+  &.rear {
+    width: $brk-rear-connector-size;
+  }
+  &.front {
+    width: $brk-front-connector-size;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      width: $brk-connector-line-width;
+      // l'altezza dipende dal numero di round ed è definita nel selettore .brk-round
+      // height: $brk-match-height * .5 + $brk-match-wrapper-vertical-padding;
+      content: '';
+    }
+
+    .brk-match-wrapper:nth-child(odd) & {
+      &::after {
+        top: $brk-connector-line-width;
+      }
+    }
+    .brk-match-wrapper:nth-child(even) & {
+      &::after {
+        bottom: $brk-connector-line-width;
+      }
+    }
+  }
+}

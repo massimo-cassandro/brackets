@@ -1,0 +1,91 @@
+@use 'sass:math';
+
+// generali
+$brk-font-family: 'Barlow', sans-serif !default;
+$brk-font-size: .9rem !default;
+$brk-font-weight-normal: 200 !default;
+$brk-font-weight-bold: 500 !default;
+
+$brk-container-bg: #212121 !default;
+// altezza container: false per non impostare
+// corrisponde al numero di match da visualizzare verticalmente nella finestra
+$brk-container-max-visible-matches: 8 !default;
+
+// intestazioni rounds
+$brk-header-height: 3rem !default;
+$brk-header-padding: .4rem !default;
+$brk-header-color: #fff !default;
+$brk-header-bg-color: #000 !default;
+$brk-header-border-left: 1px dotted rgba(#fff, .9) !default; // false se non serve il bordo
+
+// menu navigazione
+$brk-nav-trigger-color: $brk-header-color !default;
+$brk-nav-trigger-hover-color: #fec400 !default;
+$brk-nav-menu-color: #333 !default;
+$brk-nav-menu-bg: #fff !default;
+$brk-nav-menu-hover-bg: #fec400 !default;
+$brk-nav-menu-hover-color: #333 !default;
+$brk-nav-menu-border: 1px solid #ccc !default;
+$brk-nav-menu-close-btn-color: #666 !default;
+$brk-nav-menu-close-btn-hover-color: #fec400 !default;
+
+// round
+$brk-round-bg-color: transparent !default;
+$brk-round-alt-bg-color: rgba(#fff, .06) !default; // false per non avere colori alternati
+$brk-round-color: #fff !default;
+
+// match wrapper: contiene sia la partita che i connettori
+$brk-match-wrapper-vertical-padding: .5rem !default;
+
+
+// TODO bye e noshow
+
+// eventuale background del player bye, false per ignorare l'impostazione
+$brk-bye-bg: repeating-linear-gradient(
+  -45deg,
+  transparent,
+  transparent
+  .75em,
+  rgba(#fff, .15) .75em,
+  rgba(#fff, .15) 1.5em
+) !default;
+
+// background e color del player noshow, false per ignorare l'impostazione
+$brk-noshow-bg: repeating-linear-gradient(
+  -45deg,
+  transparent,
+  transparent
+  .75em,
+  rgba(#fff, .05) .75em,
+  rgba(#fff, .05) 1.5em
+) !default;
+$brk-noshow-color: rgba($brk-round-color, .8) !default; // ignorato se false
+
+// partita
+$brk-match-width: 12em !default;   // larghezza blocco match esclusi i connettori
+$brk-match-height: 3.3em !default; // altezza blocco match di entrambi i players
+$brk-match-border-radius: 0.2rem !default;
+$brk-match-border-width: 2px !default; // deve essere separato dal successivo perché impiegato in alcuni calcoli
+$brk-match-border: $brk-match-border-width solid #fff !default;
+$brk-match-bg: rgba(#fff, .1) !default;
+$brk-match-idx-bg: transparent !default;
+$brk-match-played-bg: transparent !default;
+$brk-match-unplayed-border-width: 1px !default; // utilizzato nel calcolo della definizione delle aree
+$brk-match-unplayed-border: $brk-match-unplayed-border-width dotted #fff !default;
+$brk-match-played-border: $brk-match-unplayed-border-width solid #fff !default;
+
+$brk-winner-player-bg: #fec400 !default;
+$brk-winner-player-color: $brk-container-bg !default;
+$brk-winner-font-weight: 400 !default; // false per ignorare l'impostazione
+$brk-winner-score-bg: rgba($brk-winner-player-bg, .85) !default;
+$brk-winner-score-color: $brk-winner-player-color !default;
+
+$brk-seeded-bg-color: inherit !default;
+$brk-seeded-color: inherit !default;
+$brk-seeded-border: 1px solid currentColor !default;
+
+// connettori
+$brk-connector-line-width: 2px !default;
+$brk-connector-color: #fff !default;
+$brk-rear-connector-size: 1rem !default;
+$brk-front-connector-size: 1rem !default;

@@ -1,0 +1,152 @@
+// contenitore singola partita
+// contiene anche i connettori
+.brk-match-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+
+
+  //TODO parametrizzare modalità visualizzazione noshow e bye
+  // test
+  // &:nth-child(odd) {
+  //   background-color: rgba(rgb(240, 160, 238), .5);
+  // }
+
+  // noshow e bye
+  // &.no-show1, &.bye1 {
+  //   .brk-match-player.one {
+  //     grid-area: player1 / player1 / score1 / score1;
+  //   }
+  //   .brk-match-score.one {
+  //     grid-area: none;
+  //     display: none;
+  //   }
+  // }
+  // &.no-show2, &.bye2 {
+  //   .brk-match-player.two {
+  //     grid-area: player2 / player2 / score2 / score2;
+  //   }
+  //   .brk-match-score.two {
+  //     grid-area: none;
+  //     display: none;
+  //   }
+  // }
+
+  // &.no-show1 .brk-match-player.one, &.no-show2 .brk-match-player.two  {
+  //   font-style: italic;
+  //   color: $brk-noshow-color;
+  //   background: $brk-noshow-bg;
+  // }
+  // &.bye1 .brk-match-player.one, &.bye2 .brk-match-player.two {
+  //   background: $brk-bye-bg;
+  // }
+} // end .brk-match-wrapper
+
+
+// contenitore partita
+.brk-match {
+  display: grid;
+  grid-template-columns: 1em calc(#{$brk-match-width} - 3em) 2em;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  grid-template-areas:
+    'idx player1 score1'
+    'idx player2 score2';
+
+  width: $brk-match-width;
+  height: $brk-match-height;
+  overflow: hidden;
+  background-color: $brk-match-bg;
+  border: $brk-match-border;
+  border-radius: $brk-match-border-radius;
+
+  .brk-played & {
+    background-color: $brk-match-played-bg;
+  }
+
+  &-idx { // indice partita
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: idx;
+    font-size: .8em;
+    background-color: $brk-match-idx-bg;
+    border-right: $brk-match-unplayed-border;
+    border-radius: $brk-match-border-radius 0 0 $brk-match-border-radius;
+
+    .brk-played & {
+      border-right: $brk-match-played-border;
+    }
+
+    span {
+      // writing-mode: vertical-rl;
+      // text-orientation: mixed;
+      text-align: center;
+      transform: rotate(-90deg) translateX(.1em);
+    }
+
+    // span {
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   display: block;
+    //   transform: translate(-50%, -50%) rotate(270deg);
+    //   transform-origin: center;
+    // }
+  }
+
+  &-player, &-score {
+    display: flex;
+    align-items: center;
+    padding: 0 .3rem;
+    line-height: 1.5;
+
+    @if $brk-winner-font-weight != false {
+      &.winner {
+        font-weight: $brk-winner-font-weight;
+      }
+    }
+  }
+
+  &-player {
+    justify-content: flex-start;
+
+    > div {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.winner {
+      color: $brk-winner-player-color;
+      background-color: $brk-winner-player-bg;
+    }
+  }
+  &-score {
+    justify-content: center;
+    border-left: $brk-match-unplayed-border;
+
+    &.winner {
+      color: $brk-winner-score-color;
+      background-color: $brk-winner-score-bg;
+    }
+    .brk-played & {
+      border-left: $brk-match-played-border;
+    }
+  }
+
+  &-player.two, &-score.two {
+    border-top: $brk-match-unplayed-border;
+    .brk-played & {
+      border-top: $brk-match-played-border;
+    }
+  }
+
+  &-player.one { grid-area: player1; }
+  &-score.one  { grid-area: score1; }
+  &-player.two { grid-area: player2; }
+  &-score.two  { grid-area: score2; }
+}

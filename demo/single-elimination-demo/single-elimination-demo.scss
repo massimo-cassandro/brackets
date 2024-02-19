@@ -1,0 +1,156 @@
+@use 'sass:math';
+// @import '@massimo-cassandro/m-utilities/scss-functions/svg-uri';
+
+@import '../../scss/single-elimination';
+
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+h1 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+details {
+  margin: 2rem 0;
+}
+
+.box {
+  padding: .6rem;
+  margin: 2rem 0;
+  border: 1px solid #ccc;
+  border-radius: .3rem;
+}
+
+.data-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+  max-width: 100%;
+  margin: 1rem 0 2rem;
+
+  > div {
+    flex-shrink: 1;
+    flex-grow: 0;
+    width: calc((100% - 3rem) / 3);
+  }
+  h3 {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .json {
+    font-family: monospace;
+    font-size: .9rem;
+    white-space: pre;
+  }
+  .json-key {
+    color: #2979d0;
+  }
+  h4 {
+    margin: 1rem 0 .5rem;
+  }
+
+  .box {
+    height: 250px;
+    margin: 0;
+    overflow-y: auto;
+
+    &.stats {
+      ul {
+        padding-left: 1rem;
+        margin: 0 0 1rem;
+      }
+      p {
+        margin: 1rem 0 0;
+      }
+    }
+  }
+}
+
+
+.bracket-demo-triggers {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: .5rem;
+  margin: 2rem 0;
+
+  &.border{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-group {
+    margin-right: .5rem;
+  }
+  .flex-start {
+    align-self: flex-start;
+  }
+  .flex-center {
+    align-self: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: .3rem;
+    font-size: .9rem;
+    font-weight: 700;
+  }
+  input, select {
+    display: block;
+    font-size: 1.1rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  input[type='number'], select {
+    width: 6rem;
+    padding: .6rem .5rem;
+  }
+
+  button {
+    padding: .6rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #fc0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background-color: #bece06;
+    }
+    &:active {
+      background-color: #abba05;
+    }
+    &[disabled] {
+      pointer-events: none;
+      opacity: .6;
+    }
+  }
+}
+
+#bracket-demo-container {  /* stylelint-disable-line  */
+  padding: .5rem;
+  background-color: #666;
+  border: 1px solid #ccc;
+}
+
+.brk-noshow-icon {
+  position: relative;
+  top: 1px;
+  width: .8em;
+  height: .8em;
+  margin-right: .1em;
+}

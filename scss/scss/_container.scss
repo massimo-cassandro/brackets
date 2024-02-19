@@ -1,0 +1,63 @@
+// contenitore esterno → padding e navigazione
+.brk-outer-wrapper {
+  position: relative;
+  // padding: 0 .5rem;
+  background-color: $brk-container-bg;
+
+  // sfondo barra header, nel caso la finestra sia più larga del numero dei rounds
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: $brk-header-height;
+    content: '';
+    background-color: $brk-header-bg-color;
+  }
+}
+
+// contenitore intermedio → scrolling
+.brk-container {
+  position: relative;
+
+  @include container-max-height();
+  overflow-x: scroll;
+  overscroll-behavior: contain;
+  cursor: default;
+
+  // scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar { // chrome
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  &, * {
+    box-sizing: border-box;
+  }
+
+  strong, b {
+    font-weight: $brk-font-weight-bold;
+  }
+}
+
+// contenitore interno → rounds
+.brk-wrapper {
+  // position: relative;
+  // z-index: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  font-family: $brk-font-family;
+  font-size: $brk-font-size;
+  font-weight: $brk-font-weight-normal;
+  line-height: 1;
+
+}
